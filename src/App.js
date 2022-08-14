@@ -1,18 +1,16 @@
-import "./scss/App.scss";
-import Context from "./context/Context";
 import { ToastContainer } from "react-toastify";
 import Input from "./components/Input/Input";
-import Main from "./components/Main/Main";
+import "./scss/App.scss";
+
 import WeatherCard from "./components/WeatherCard/WeatherCard";
+import { useWeatherAppContext } from "./context/Context";
 function App() {
+  const { loaded } = useWeatherAppContext();
   return (
-    <div className="App">
-      <Context>
-        <Input />
-        <Main />
-        <WeatherCard />
-        <ToastContainer />
-      </Context>
+    <div>
+      <Input />
+      {loaded && <WeatherCard />}
+      <ToastContainer />
     </div>
   );
 }

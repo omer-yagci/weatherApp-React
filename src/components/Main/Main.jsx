@@ -1,13 +1,16 @@
-import WeatherCard from "../WeatherCard/WeatherCard";
-import { useWeatherAppContext } from "../../context/Context";
+// // import WeatherCard from "../WeatherCard/WeatherCard";
+// // import { useWeatherAppContext } from "../../context/Context";
 
-import Mainstyles from "./main.module.scss";
+// import Mainstyles from "./main.module.scss";
 
-const Main = () => {
-  // const { datas } = useWeatherAppContext();
-  // console.log(datas);
+// const Main = () => {
+//   return (
+//     <div className={Mainstyles.container}>
+//       {/* {datas?.map((item, index) => {
+//         return <WeatherCard item={item} />;
+//       })} */}
+//     </div>
+//   );
+// };
 
-  return <div className={Mainstyles.container}></div>;
-};
-
-export default Main;
+// export default Main;

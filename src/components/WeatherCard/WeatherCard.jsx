@@ -9,9 +9,8 @@ const WeatherCard = () => {
     id,
     name,
     sys: { country },
-    weather: {
-      0: { description, icon },
-    },
+    weather: { description, icon },
+
     main: { temp },
   } = datas;
   const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;

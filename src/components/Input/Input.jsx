@@ -4,7 +4,7 @@ import { useWeatherAppContext } from "../../context/Context";
 const Input = () => {
   const [value, setValue] = useState();
 
-  const { setCountry, getDataFromAPI } = useWeatherAppContext();
+  const { setCountry, getDataFromAPI, setLoaded } = useWeatherAppContext();
 
   const inputChangeHandler = (event) => {
     setValue(event.target.value);
@@ -14,6 +14,7 @@ const Input = () => {
     event.preventDefault();
     getDataFromAPI();
     setCountry(value);
+    setLoaded(true);
   };
 
   return (
@@ -28,7 +29,7 @@ const Input = () => {
               type="search"
               onChange={inputChangeHandler}
               className="form-control"
-              required
+              value={value}
             />
           </div>
         </form>
