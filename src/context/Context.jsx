@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { toastWarnNotify } from "../helpers/Toastify";
+// import { toastWarnNotify } from "../helpers/Toastify";
 
 // ? Defining context
 export const WeatherAppContext = createContext();
@@ -11,9 +11,26 @@ export const useWeatherAppContext = () => {
 };
 
 const Context = ({ children }) => {
-  const [data, setData] = useState();
+  const [country, setCountry] = useState("london");
 
-  const values = { data, setData };
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${country}&units=metric&APPID=${API_KEY}`;
+
+  useEffect(() => {
+    getDataFromAPI();
+  }, []);
+
+  const getDataFromAPI = async () => {
+    try {
+      const { data } = await axios.get(URL);
+      console.log(data);
+      setCountry(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const values = { country, setCountry };
   return (
     <WeatherAppContext.Provider value={values}>
       {children}
