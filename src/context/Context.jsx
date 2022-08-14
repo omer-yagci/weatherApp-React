@@ -11,14 +11,14 @@ export const useWeatherAppContext = () => {
 };
 
 const Context = ({ children }) => {
-  const [country, setCountry] = useState("london");
+  const [country, setCountry] = useState([]);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${country}&units=metric&APPID=${API_KEY}`;
 
   useEffect(() => {
     getDataFromAPI();
-  }, []);
+  }, [country]);
 
   const getDataFromAPI = async () => {
     try {
