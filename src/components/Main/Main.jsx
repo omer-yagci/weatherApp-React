@@ -1,7 +1,18 @@
-import React from "react";
+import { useWeatherAppContext } from "../../context/Context";
+import WeatherCard from "../WeatherCard/WeatherCard";
+
+import Mainstyles from "./main.module.scss";
 
 const Main = () => {
-  return <div>Main</div>;
+  const { data } = useWeatherAppContext();
+
+  return (
+    <div className={Mainstyles.container}>
+      {data?.map((item, index) => {
+        return <WeatherCard key={index} item={item} />;
+      })}
+    </div>
+  );
 };
 
 export default Main;

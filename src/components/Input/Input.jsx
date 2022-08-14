@@ -4,7 +4,7 @@ import { useWeatherAppContext } from "../../context/Context";
 const Input = () => {
   const [value, setValue] = useState();
 
-  const { setCountry } = useWeatherAppContext();
+  const { setCountry, getDataFromAPI } = useWeatherAppContext();
 
   const inputChangeHandler = (event) => {
     setValue(event.target.value);
@@ -12,6 +12,7 @@ const Input = () => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
+    getDataFromAPI();
     setCountry(value);
   };
 
