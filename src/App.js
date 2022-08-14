@@ -1,9 +1,12 @@
 import "./scss/App.scss";
-
+import Context from "./context/Context";
+import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div className="App">
-      <h1>Sea</h1>
+      <Context>
+        <ToastContainer />
+      </Context>
     </div>
   );
 }
