@@ -16,8 +16,10 @@ export const useWeatherAppContext = () => {
 
 const Context = ({ children }) => {
   const [country, setCountry] = useState("");
+
   const [datas, setDatas] = useState([]);
-  const [loaded, setLoaded] = useState(false);
+
+  // const [loaded, setLoaded] = useState(false);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${country}&units=metric&APPID=${API_KEY}`;
@@ -29,12 +31,11 @@ const Context = ({ children }) => {
       try {
         const { data } = await axios.get(URL);
         newWeatherCard(data);
-        console.log(data);
         toastSuccessNotify("Valid DATA");
       } catch (error) {
         toastWarnNotify(error);
       }
-      setLoaded(true);
+      // setLoaded(true);
     }
   };
 
@@ -49,30 +50,10 @@ const Context = ({ children }) => {
 
       main: { temp },
     } = data;
-    setDatas([{ id, name, country, description, icon, temp }]);
+    setDatas([{ id, name, country, description, icon, temp }, ...datas]);
   };
 
-  // const newWeatherCard = (data) => {
-  //   console.log(data);
-  //   setDatas(
-  //     data?.map((element) => {
-  //       const {
-  //         id,
-  //         name,
-  //         sys: { country },
-  //         weather: {
-  //           0: { description, icon },
-  //         },
-
-  //         main: { temp },
-  //       } = element;
-
-  //       return [{ id, name, country, description, icon, temp }];
-  //     })
-  //   );
-  // };
-
-  const values = { setCountry, getDataFromAPI, datas, loaded, setLoaded };
+  const values = { setCountry, getDataFromAPI, datas };
   return (
     <WeatherAppContext.Provider value={values}>
       {children}
