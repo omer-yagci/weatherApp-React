@@ -14,7 +14,6 @@ const Input = () => {
     event.preventDefault();
     getDataFromAPI();
     setCountry(value);
-    setLoaded(true);
   };
 
   return (

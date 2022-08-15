@@ -13,25 +13,30 @@ const WeatherCard = () => {
 
     main: { temp },
   } = datas;
-  const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  const iconURL = `http://openweathermap.org/img/wn/${datas.weather[0].icon}@2x.png`;
 
   return (
-    <div className={MovieCardStyles.container}>
-      <div key={id} className={MovieCardStyles.card}>
-        <h4 className={MovieCardStyles["city-name"]}>
-          {name}
-          <span className={MovieCardStyles.orange}>
-            <sup>{country}</sup>
-          </span>
-        </h4>
-        <p className={MovieCardStyles.degree}>{temp}</p>
-        <img src={iconURL} alt="icon" />
-        <p className={MovieCardStyles["weather-type"]}>
-          {description.toLowerCase().charAt(0).toUpperCase() +
-            description.slice(1)}
-        </p>
-      </div>
-    </div>
+    <>
+      {datas ? (
+        <div className={MovieCardStyles.container}>
+          <div key={id} className={MovieCardStyles.card}>
+            <h4 className={MovieCardStyles["city-name"]}>
+              {name}
+              <span className={MovieCardStyles.orange}>
+                <sup>{country}</sup>
+              </span>
+            </h4>
+            <p className={MovieCardStyles.degree}>{temp}</p>
+            <img src={iconURL} alt="icon" />
+            <p className={MovieCardStyles["weather-type"]}>{description}</p>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <h1>Seaaaa</h1>
+        </div>
+      )}
+    </>
   );
 };
 

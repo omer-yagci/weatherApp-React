@@ -28,6 +28,7 @@ const Context = ({ children }) => {
     } else {
       try {
         const { data } = await axios.get(URL);
+
         setDatas(data);
         toastSuccessNotify("Valid DATA");
       } catch (error) {
