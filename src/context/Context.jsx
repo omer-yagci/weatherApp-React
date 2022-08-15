@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import {
   toastErrorNotify,
@@ -28,7 +28,19 @@ const Context = ({ children }) => {
     } else {
       try {
         const { data } = await axios.get(URL);
-        setDatas(data);
+        const {
+          id,
+          name,
+          sys: { country },
+          weather: {
+            0: { description, icon },
+          },
+
+          main: { temp },
+        } = data;
+        setDatas([{ id, name, country, description, icon, temp }]);
+        console.log(data);
+
         toastSuccessNotify("Valid DATA");
       } catch (error) {
         toastWarnNotify(error);

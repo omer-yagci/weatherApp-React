@@ -2,24 +2,17 @@ import React from "react";
 import { useWeatherAppContext } from "../../context/Context";
 import MovieCardStyles from "../WeatherCard/moviecard.module.scss";
 
-const WeatherCard = () => {
+const WeatherCard = ({ data }) => {
   const { datas } = useWeatherAppContext();
+  console.log(datas[0]);
+  const { id, name, country, description, icon, temp } = datas[0];
 
-  const {
-    id,
-    name,
-    sys: { country },
-    weather: {
-      0: { description, icon },
-    },
-
-    main: { temp },
-  } = datas;
+  console.log(id);
   const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   return (
     <>
-      {datas ? (
+      {datas[0] ? (
         <div className={MovieCardStyles.container}>
           <div key={id} className={MovieCardStyles.card}>
             <h4 className={MovieCardStyles["city-name"]}>
