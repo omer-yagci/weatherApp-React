@@ -1,15 +1,17 @@
-@import "../../scss/variables";
-
 .container {
   .card {
     width: 300px;
     background-color: yellow;
-    border-radius: 76% 24% 73% 27% / 39% 68% 32% 61%;
-    padding: 7px;
-    margin: 10px;
+    border-radius: 80% 24% 73% 27% / 20% 68% 32% 61%;
+    padding: 0.6rem;
     text-align: center;
+    font-size: 1.2rem;
+
     .orange {
-      color: orange;
+      color: black;
+      // padding: 0.1rem;
+      margin-bottom: 1rem;
+      border-radius: 15px;
     }
   }
 }

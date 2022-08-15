@@ -1,4 +1,7 @@
-@import "./reset", "./variables";
+@import "./reset";
 @import url("https://fonts.googleapis.com/css2?family=DynaPuff&display=swap");
 
-//
+html,
+#root {
+  background-image: linear-gradient(90deg, #239ad2, #56c0e7);
+}
