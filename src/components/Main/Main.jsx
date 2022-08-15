@@ -4,12 +4,11 @@ import Mainstyles from "./main.module.scss";
 
 const Main = () => {
   const { datas } = useWeatherAppContext();
-  // console.log(datas);
 
   return (
     <div className={Mainstyles.container}>
       {datas?.map((item, index) => (
-        <WeatherCard data={item} />
+        <WeatherCard key={index} data={item} />
       ))}
     </div>
   );

@@ -23,19 +23,27 @@ const Context = ({ children }) => {
 
   const API_KEY = process.env.REACT_APP_API_KEY;
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${country}&units=metric&APPID=${API_KEY}`;
-
   const getDataFromAPI = async () => {
     if (country === "") {
       toastErrorNotify("Required field cannot left blank");
     } else {
       try {
         const { data } = await axios.get(URL);
-        newWeatherCard(data);
-        toastSuccessNotify("Valid DATA");
+        console.log(data);
+        const { id, name } = data;
+
+        const checkCity = datas.some((weatherCard) => weatherCard.id === id);
+        if (checkCity) {
+          toastWarnNotify(
+            ` ${name}  Already exist.Please enter another city name..`
+          );
+        } else {
+          newWeatherCard(data);
+          toastSuccessNotify("Valid DATA");
+        }
       } catch (error) {
-        toastWarnNotify(error);
+        toastWarnNotify(`${country}  not found!`);
       }
-      // setLoaded(true);
     }
   };
 
