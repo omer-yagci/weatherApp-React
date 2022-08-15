@@ -28,19 +28,8 @@ const Context = ({ children }) => {
     } else {
       try {
         const { data } = await axios.get(URL);
-        const {
-          id,
-          name,
-          sys: { country },
-          weather: {
-            0: { description, icon },
-          },
-
-          main: { temp },
-        } = data;
-        setDatas([{ id, name, country, description, icon, temp }]);
+        newWeatherCard(data);
         console.log(data);
-
         toastSuccessNotify("Valid DATA");
       } catch (error) {
         toastWarnNotify(error);
@@ -48,6 +37,40 @@ const Context = ({ children }) => {
       setLoaded(true);
     }
   };
+
+  const newWeatherCard = (data) => {
+    const {
+      id,
+      name,
+      sys: { country },
+      weather: {
+        0: { description, icon },
+      },
+
+      main: { temp },
+    } = data;
+    setDatas([{ id, name, country, description, icon, temp }]);
+  };
+
+  // const newWeatherCard = (data) => {
+  //   console.log(data);
+  //   setDatas(
+  //     data?.map((element) => {
+  //       const {
+  //         id,
+  //         name,
+  //         sys: { country },
+  //         weather: {
+  //           0: { description, icon },
+  //         },
+
+  //         main: { temp },
+  //       } = element;
+
+  //       return [{ id, name, country, description, icon, temp }];
+  //     })
+  //   );
+  // };
 
   const values = { setCountry, getDataFromAPI, datas, loaded, setLoaded };
   return (

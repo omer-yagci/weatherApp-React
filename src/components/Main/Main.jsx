@@ -10,7 +10,7 @@
 //   return (
 //     <div className={Mainstyles.container}>
 //       {datas?.map((item, index) => (
-//         <WeatherCard data={...item} />
+//         <WeatherCard data={item} />
 //       ))}
 //     </div>
 //   );

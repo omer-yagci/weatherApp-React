@@ -1,34 +1,33 @@
 import React from "react";
 import { useWeatherAppContext } from "../../context/Context";
-import MovieCardStyles from "../WeatherCard/moviecard.module.scss";
+import WeatherCardStyles from "../WeatherCard/weathercard.module.scss";
 
-const WeatherCard = ({ data }) => {
+const WeatherCard = () => {
   const { datas } = useWeatherAppContext();
-  console.log(datas[0]);
+
   const { id, name, country, description, icon, temp } = datas[0];
 
-  console.log(id);
   const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   return (
     <>
-      {datas[0] ? (
-        <div className={MovieCardStyles.container}>
-          <div key={id} className={MovieCardStyles.card}>
-            <h4 className={MovieCardStyles["city-name"]}>
+      {datas ? (
+        <div className={WeatherCardStyles.container}>
+          <div key={id} className={WeatherCardStyles.card}>
+            <h4 className={WeatherCardStyles["city-name"]}>
               {name.includes("Province") ? name.replace("Province", " ") : name}
-              <span className={MovieCardStyles.orange}>
+              <span className={WeatherCardStyles.orange}>
                 <sup>{country}</sup>
               </span>
             </h4>
-            <p className={MovieCardStyles.degree}>
+            <p className={WeatherCardStyles.degree}>
               {temp.toFixed()}
               <span>
                 <sup>°C</sup>
               </span>
             </p>
             <img src={iconURL} alt="icon" />
-            <p className={MovieCardStyles["weather-type"]}>{description}</p>
+            <p className={WeatherCardStyles["weather-type"]}>{description}</p>
           </div>
         </div>
       ) : (
