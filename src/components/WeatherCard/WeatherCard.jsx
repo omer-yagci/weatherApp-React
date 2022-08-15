@@ -9,11 +9,13 @@ const WeatherCard = () => {
     id,
     name,
     sys: { country },
-    weather: { description, icon },
+    weather: {
+      0: { description, icon },
+    },
 
     main: { temp },
   } = datas;
-  const iconURL = `http://openweathermap.org/img/wn/${datas.weather[0].icon}@2x.png`;
+  const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   return (
     <>
@@ -21,12 +23,17 @@ const WeatherCard = () => {
         <div className={MovieCardStyles.container}>
           <div key={id} className={MovieCardStyles.card}>
             <h4 className={MovieCardStyles["city-name"]}>
-              {name}
+              {name.includes("Province") ? name.replace("Province", " ") : name}
               <span className={MovieCardStyles.orange}>
                 <sup>{country}</sup>
               </span>
             </h4>
-            <p className={MovieCardStyles.degree}>{temp}</p>
+            <p className={MovieCardStyles.degree}>
+              {temp.toFixed()}
+              <span>
+                <sup>°C</sup>
+              </span>
+            </p>
             <img src={iconURL} alt="icon" />
             <p className={MovieCardStyles["weather-type"]}>{description}</p>
           </div>
