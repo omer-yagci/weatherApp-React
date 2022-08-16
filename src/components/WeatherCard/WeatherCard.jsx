@@ -1,6 +1,6 @@
 import React from "react";
-
 import WeatherCardStyles from "../WeatherCard/weathercard.module.scss";
+import { setBgChange } from "../../services/ChangeColor";
 
 const WeatherCard = ({ data }) => {
   const { id, name, country, description, icon, temp } = data;
@@ -18,7 +18,7 @@ const WeatherCard = ({ data }) => {
                 <sup>{country}</sup>
               </span>
             </h4>
-            <p className={WeatherCardStyles.degree}>
+            <p className={`degree ${setBgChange(temp)}`}>
               {temp.toFixed()}
               <span>
                 <sup>°C</sup>
