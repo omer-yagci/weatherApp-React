@@ -29,9 +29,7 @@ const WeatherCard = ({ data }) => {
           </div>
         </div>
       ) : (
-        <div>
-          <h1>Seaaaa</h1>
-        </div>
+        <></>
       )}
     </>
   );
